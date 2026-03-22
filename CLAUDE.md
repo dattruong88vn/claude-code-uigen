@@ -52,6 +52,14 @@ JWT sessions via `jose` stored in secure HTTP-only cookies. Passwords hashed wit
 
 `src/lib/transform/jsx-transformer.ts` transforms the virtual FS files into executable browser code. `PreviewFrame.tsx` renders them in an iframe using `@babel/standalone` and an import map.
 
+### Database Schema
+
+Schema: `prisma/schema.prisma` — SQLite (`prisma/dev.db`), client generated to `src/generated/prisma`.
+
+**User** — `id` (cuid), `email` (unique), `password` (bcrypt), `createdAt`, `updatedAt`, `projects[]`
+
+**Project** — `id` (cuid), `name`, `userId?` (nullable — anon users), `messages` (JSON string, default `"[]"`), `data` (JSON string for virtual FS, default `"{}"`), `createdAt`, `updatedAt`, `user?` (onDelete: Cascade)
+
 ## Environment
 
 Copy `.env` and set `ANTHROPIC_API_KEY` to use a real Claude model. The app works without it via the mock provider.
