@@ -60,6 +60,22 @@ Schema: `prisma/schema.prisma` — SQLite (`prisma/dev.db`), client generated to
 
 **Project** — `id` (cuid), `name`, `userId?` (nullable — anon users), `messages` (JSON string, default `"[]"`), `data` (JSON string for virtual FS, default `"{}"`), `createdAt`, `updatedAt`, `user?` (onDelete: Cascade)
 
+## Commit Convention
+
+Use the format: `[type] description`
+
+| Type | When to use |
+|------|-------------|
+| `feat` | New feature |
+| `bug` | Bug fix |
+| `enhance` | Improvement to an existing feature |
+| `test` | Adding or updating tests |
+| `docs` | Documentation changes |
+| `refactor` | Code restructure without behavior change |
+| `chore` | Deps, config, tooling |
+
+Example: `feat add markdown support to chat messages`
+
 ## Environment
 
 Copy `.env` and set `ANTHROPIC_API_KEY` to use a real Claude model. The app works without it via the mock provider.
